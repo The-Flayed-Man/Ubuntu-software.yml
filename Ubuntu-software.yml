@@ -1,0 +1,24 @@
+---
+ - name: Instal software on ubuntu workstation.
+   hosts: 
+   become_method: sudo
+   gather_facts: false
+   tasks:
+     - name: Install ubuntu software
+       apt:
+         pkg:
+           - lynis
+           - bpytop
+           - rkhunter
+           - duf
+           - ssh
+           - needrestart
+         state: latest
+         update_cache: true
+
+     - name: Remove software packages
+       apt:
+         pkg:
+           - telnet
+         state: absent
+         update_cache: true 
