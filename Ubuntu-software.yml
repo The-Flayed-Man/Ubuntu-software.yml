@@ -1,24 +1,37 @@
 ---
  - name: Instal software on ubuntu workstation.
-   hosts: 
+   hosts: localhost
    become_method: sudo
    gather_facts: false
    tasks:
      - name: Install ubuntu software
        apt:
-         pkg:
+         name:
            - lynis
            - bpytop
            - rkhunter
            - duf
            - ssh
            - needrestart
-         state: latest
+           - vim
+           - git
+           - wget
+           - gnome-text-editor
+           - terminator
+           - geary
+           - neofetch
+         state: present
          update_cache: true
 
      - name: Remove software packages
        apt:
          pkg:
            - telnet
+           - gnome-mines
+           - gnome-sudoku
+           - gnome-mahjongg
+           - aisleriot
+           - thunderbird
+           - gedit
          state: absent
          update_cache: true 
